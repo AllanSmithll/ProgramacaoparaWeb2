@@ -7,8 +7,9 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
-import br.edu.ifpb.pweb2.bitbankay.model.Correntista;
 import org.springframework.stereotype.Component;
+
+import br.edu.ifpb.pweb2.bitbankay.model.Correntista;
 
 @Component
 public class CorrentistaRepository {
@@ -18,11 +19,12 @@ public class CorrentistaRepository {
         return repositorio.get(id);
     }
 
-    public void save(Correntista correntista) {
+    public Correntista save(Correntista correntista) {
         Integer id = null;
-        id = (correntista.getId() == null) ? this.getMaxId() + 1 : correntista.getId();
+        id = (correntista.getId() == null) ? this.getMaxId() : correntista.getId();
         correntista.setId(id);
         repositorio.put(id, correntista);
+        return correntista;
     }
 
     public List<Correntista> findAll() {

@@ -22,6 +22,10 @@ public class Conta implements Serializable {
 
     private Correntista correntista;
 
+    public Conta(Correntista correntista) {
+        this.correntista = correntista;
+    }
+
     public BigDecimal getSaldo() {
         BigDecimal total = BigDecimal.ZERO;
         for (Transacao t : this.transacoes) {
